@@ -1,0 +1,42 @@
+<?php
+
+namespace App\Http\Controllers\Admin;
+
+use App\Models\SiteSetting;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
+
+class SettingController extends Controller
+{
+    /**
+     * Display a listing of the resource.
+     */
+    public function index()
+    {
+        $setting = SiteSetting::first();
+        return view('admin.settings.index', compact('setting'));
+    }
+    public function edit()
+    {
+        $setting = SiteSetting::first();  
+        return view('admin.settings.edit', compact('setting'));
+    }
+
+    public function update(Request $request)
+    {
+        $setting = SiteSetting::first();
+
+        $data = $request->except('_token', 'logo');
+
+        if ($request->hasFile('logo')) {
+            $file = $request->file('logo')->store('settings', 'public');
+            $data['logo'] = $file;
+        }
+
+         SiteSetting::updateOrCreate(['id' => 1], $data);
+
+        return redirect()->back()->with('success', 'Settings updated successfully');
+    }
+
+}
