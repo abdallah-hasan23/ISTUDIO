@@ -29,7 +29,7 @@
     <!-- Template Stylesheet -->
     <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet">
 
-    <title>@yield('title',env('APP_NAME'))</title>
+    <title>@yield('title', env('APP_NAME'))</title>
     @yield('css')
 </head>
 
@@ -63,7 +63,7 @@
                         <a href="{{ route('site.project') }}" class="nav-item nav-link">Projects</a>
                         <a href="{{ route('site.feature') }}" class="nav-item nav-link">Features</a>
                         <a href="{{ route('site.testimonial') }}" class="nav-item nav-link">Testimonial</a>
-                        
+
                         <a href="{{ route('site.contact') }}" class="nav-item nav-link">Contact</a>
                     </div>
                 </div>
@@ -84,13 +84,13 @@
                     <a href="index.html" class="d-inline-block mb-3">
                         <h1 class="text-white">iSTUDIO</h1>
                     </a>
-                    <p class="mb-0">{{ $about->description ?? ''}}</p>
+                    <p class="mb-0">{{ $about->description ?? '' }}</p>
                 </div>
                 <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.3s">
                     <h5 class="text-white mb-4">Get In Touch</h5>
-                    <p><i class="fa fa-map-marker-alt me-3"></i>{{ $settings->address ?? ''}}</p>
-                    <p><i class="fa fa-phone-alt me-3"></i>{{ $settings->phone ?? ''}}</p>
-                    <p><i class="fa fa-envelope me-3"></i>{{ $settings->email ?? ''}}</p>
+                    <p><i class="fa fa-map-marker-alt me-3"></i>{{ $settings->address ?? '' }}</p>
+                    <p><i class="fa fa-phone-alt me-3"></i>{{ $settings->phone ?? '' }}</p>
+                    <p><i class="fa fa-envelope me-3"></i>{{ $settings->email ?? '' }}</p>
                     <div class="d-flex pt-2">
                         <a class="btn btn-outline-primary btn-square border-2 me-2" target="_blank" href=""><i
                                 class="fab fa-twitter"></i></a>
@@ -124,13 +124,10 @@
             <div class="copyright">
                 <div class="row">
                     <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                        &copy; <a class="border-bottom" href="#!">Your Site Name</a>, All Right Reserved.
+                        &copy; <a class="border-bottom" href="{{ route('site.index') }}">iSTUDIO</a>, All Right Reserved.
 
-                        <!--/*** This template is free as long as you keep the below author’s credit link/attribution link/backlink. ***/-->
-                        <!--/*** If you'd like to use the template without the below author’s credit link/attribution link/backlink, ***/-->
-                        <!--/*** you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". ***/-->
-                        Designed By <a class="border-bottom" href="https://htmlcodex.com">HTML Codex</a>. Distributed by
-                        <a class="border-bottom" href="https://themewagon.com" target="_blank">ThemeWagon</a>
+                        <!-- تم برمجة هذا الموقع من خلال شركة Codeora -->
+                        Developed by <a class="border-bottom" href="#">Codeora</a>
                     </div>
                     <div class="col-md-6 text-center text-md-end">
                         <div class="footer-menu">
