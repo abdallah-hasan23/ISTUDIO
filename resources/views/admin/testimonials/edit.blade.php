@@ -30,7 +30,7 @@
         <div class="form-group mt-3">
             <label>Current Image</label><br>
             @if($testimonial->image)
-                <img src="{{ asset('uploads/Testimonial/'.$testimonial->image) }}" width="100" height="100" style="object-fit: cover; border-radius: 8px;">
+                <img src="{{ str_starts_with($testimonial->image, 'http') ? $testimonial->image : asset('uploads/Testimonial/'.$testimonial->image) }}" width="100" height="100" style="object-fit: cover; border-radius: 8px;">
             @else
                 <p>No image uploaded</p>
             @endif

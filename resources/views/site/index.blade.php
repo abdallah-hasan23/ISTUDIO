@@ -17,7 +17,7 @@
                     <div class="owl-carousel header-carousel animated fadeIn">
                         @foreach ($projects->take(3) as $project)
                             @foreach ($project->images as $image)
-                                <img class="img-fluid" src="{{ asset('uploads/projects/' . $image->image_path) }}" alt="{{ $project->title }}">
+                                <img class="img-fluid" src="{{ str_starts_with($image->image_path, 'http') ? $image->image_path : asset('uploads/projects/' . $image->image_path) }}" alt="{{ $project->title }}">
                             @endforeach
                         @endforeach
                         {{-- <img class="img-fluid" src="{{ asset('assets/img/hero-slider-2.jpg') }}" alt="">
@@ -69,7 +69,7 @@
         <div class="container">
             <div class="row g-5">
                 <div class="col-lg-6">
-                    <div class="row">
+                    <div class="row about-imgs">
                         <div class="col-6 wow fadeIn" data-wow-delay="0.1s">
                             <img class="img-fluid" src="{{ asset('assets/img/about-1.jpg') }}" alt="">
                         </div>
@@ -183,7 +183,7 @@
                         <div class="col-md-6 col-lg-4 wow fadeIn" data-wow-delay="0.2s">
                             <div class="project-item position-relative overflow-hidden">
                                 @foreach ($item->images as $image)
-                                    <img class="img-fluid w-100 h-100" src="{{ asset('uploads/projects/' . $image->image_path) }}" alt="{{ $item->title }}">
+                                    <img class="img-fluid w-100 h-100" src="{{ str_starts_with($image->image_path, 'http') ? $image->image_path : asset('uploads/projects/' . $image->image_path) }}" alt="{{ $item->title }}">
                                 @endforeach
                                 <a class="project-overlay text-decoration-none" href="#!">
                                     <h4 class="text-white">{{ $item->category }}</h4>
@@ -231,7 +231,7 @@
                             <div class="col-md-6 wow fadeIn" data-wow-delay="0.2s">
                                 <div class="service-item h-100 d-flex flex-column justify-content-center bg-primary">
                                     <a href="#!" class="service-img position-relative mb-4">
-                                        <img class="img-fluid w-100" src="{{ asset('uploads/services/'. $service->icon ?? '') }}" alt="">
+                                        <img class="img-fluid w-100" src="{{ str_starts_with($service->icon, 'http') ? $service->icon : asset('uploads/services/'. $service->icon ?? '') }}" alt="">
                                         <h3>{{ $service->title  ?? ''}}</h3>
                                     </a>
                                     <p class="mb-0">{{ $service->description  ?? ''}}</p>
@@ -259,7 +259,7 @@
                 @foreach ($team as $member)
                 <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="{{ $count += 0.2 }}">
                     <div class="team-item position-relative overflow-hidden">
-                        <img class="img-fluid w-100" src="{{ asset('uploads/team/'. $member->image) }}" alt="">
+                        <img class="img-fluid w-100" src="{{ str_starts_with($member->image, 'http') ? $member->image : asset('uploads/team/'. $member->image) }}" alt="">
                         <div class="team-overlay">
                             <small class="mb-2">{{ $member->job_title }}</small>
                             <h4 class="lh-base text-light">{{ $member->name }}</h4>
@@ -298,7 +298,7 @@
                                 <div class="row g-5 align-items-center">
                                     <div class="col-md-6">
                                         <div class="testimonial-img">
-                                            <img class="img-fluid" src="{{ asset('uploads/Testimonials/'.$item->image) }}" alt="">
+                                            <img class="img-fluid" src="{{ str_starts_with($item->image, 'http') ? $item->image : asset('uploads/Testimonials/'.$item->image) }}" alt="">
                                         </div>
                                     </div>
                                     <div class="col-md-6">

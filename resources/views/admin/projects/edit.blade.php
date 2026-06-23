@@ -74,7 +74,7 @@
     <div class="row">
         @foreach($project->images as $img)
         <div class="col-md-3 text-center mb-3">
-            <img src="{{ asset('uploads/projects/' . $img->image_path) }}" class="img-fluid mb-2" style="height:120px; object-fit:cover;">
+            <img src="{{ str_starts_with($img->image_path, 'http') ? $img->image_path : asset('uploads/projects/' . $img->image_path) }}" class="img-fluid mb-2" style="height:120px; object-fit:cover;">
 
             <form action="{{ route('admin.project.image.delete', $img->id) }}" method="POST">
                 @csrf @method('DELETE')

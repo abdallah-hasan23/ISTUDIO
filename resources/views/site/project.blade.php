@@ -40,7 +40,7 @@
                         <div class="col-md-6 col-lg-4 wow fadeIn" data-wow-delay="0.2s">
                             <div class="project-item position-relative overflow-hidden">
                                 @foreach ($item->images as $image)
-                                    <img class="img-fluid w-100 h-100" src="{{ asset('uploads/projects/' . $image->image_path) }}" alt="{{ $item->title }}">
+                                    <img class="img-fluid w-100 h-100" src="{{ str_starts_with($image->image_path, 'http') ? $image->image_path : asset('uploads/projects/' . $image->image_path) }}" alt="{{ $item->title }}">
                                 @endforeach
                                 <a class="project-overlay text-decoration-none" href="#!">
                                     <h4 class="text-white">{{ $item->category }}</h4>
@@ -70,7 +70,7 @@
                                 <div class="row g-5 align-items-center">
                                     <div class="col-md-6">
                                         <div class="testimonial-img">
-                                            <img class="img-fluid" src="{{ asset('uploads/Testimonial/'.$item->image) }}" alt="">
+                                            <img class="img-fluid" src="{{ str_starts_with($item->image, 'http') ? $item->image : asset('uploads/Testimonial/'.$item->image) }}" alt="">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
@@ -136,7 +136,7 @@
         <div class="container p-0">
             <div class="row g-0 align-items-center">
                 <div class="col-md-5 ps-lg-0 text-start wow fadeIn" data-wow-delay="0.2s">
-                    <img class="img-fluid w-100" src="img/newsletter.jpg" alt="">
+                    <img class="img-fluid w-100" src="{{ asset('assets/img/newsletter.jpg') }}" alt="">
                 </div>
                 <div class="col-md-7 py-5 newsletter-text wow fadeIn" data-wow-delay="0.5s">
                     <div class="p-5">

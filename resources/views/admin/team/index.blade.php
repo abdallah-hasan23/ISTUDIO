@@ -28,7 +28,7 @@
                 <td>{{ $loop->iteration }}</td>
                 <td>
                     @if ($m->image)
-                        <img src="{{ asset('uploads/team/' . $m->image) }}" width="70">
+                        <img src="{{ str_starts_with($m->image, 'http') ? $m->image : asset('uploads/team/' . $m->image) }}" width="70">
                     @endif
                 </td>
                 <td>{{ $m->name }}</td>

@@ -30,7 +30,7 @@
         <div class="container">
             <div class="row g-5">
                 <div class="col-lg-6">
-                    <div class="row">
+                    <div class="row about-imgs">
                         <div class="col-6 wow fadeIn" data-wow-delay="0.1s">
                             <img class="img-fluid" src="{{ asset('assets/img/about-1.jpg') }}" alt="">
                         </div>
@@ -89,7 +89,7 @@
                 @foreach ($team as $member)
                 <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="{{ $count += 0.2 }}">
                     <div class="team-item position-relative overflow-hidden">
-                        <img class="img-fluid w-100" src="{{ asset('uploads/team/'. $member->image) }}" alt="">
+                        <img class="img-fluid w-100" src="{{ str_starts_with($member->image, 'http') ? $member->image : asset('uploads/team/'. $member->image) }}" alt="">
                         <div class="team-overlay">
                             <small class="mb-2">{{ $member->job_title }}</small>
                             <h4 class="lh-base text-light">{{ $member->name }}</h4>
@@ -172,7 +172,7 @@
         <div class="container p-0">
             <div class="row g-0 align-items-center">
                 <div class="col-md-5 ps-lg-0 text-start wow fadeIn" data-wow-delay="0.2s">
-                    <img class="img-fluid w-100" src="img/newsletter.jpg" alt="">
+                    <img class="img-fluid w-100" src="{{ asset('assets/img/newsletter.jpg') }}" alt="">
                 </div>
                 <div class="col-md-7 py-5 newsletter-text wow fadeIn" data-wow-delay="0.5s">
                     <div class="p-5">

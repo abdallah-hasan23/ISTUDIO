@@ -18,7 +18,7 @@
 
     @if ($about->image)
         <p class="mt-3">Current Image:</p>
-        <img src="{{ asset('uploads/about/' . $about->image) }}" width="200">
+        <img src="{{ str_starts_with($about->image, 'http') ? $about->image : asset('uploads/about/' . $about->image) }}" width="200">
     @endif
 
     <button class="btn btn-primary mt-3">Update</button>

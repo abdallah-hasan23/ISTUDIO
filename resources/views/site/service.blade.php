@@ -52,7 +52,7 @@
                             <div class="col-md-6 wow fadeIn" data-wow-delay="0.2s">
                                 <div class="service-item h-100 d-flex flex-column justify-content-center bg-primary">
                                     <a href="#!" class="service-img position-relative mb-4">
-                                        <img class="img-fluid w-100" src="{{ asset('uploads/services/'. $service->icon) }}" alt="">
+                                        <img class="img-fluid w-100" src="{{ str_starts_with($service->icon, 'http') ? $service->icon : asset('uploads/services/'. $service->icon) }}" alt="">
                                         <h3>{{ $service->title }}</h3>
                                     </a>
                                     <p class="mb-0">{{ $service->description }}</p>
@@ -79,7 +79,7 @@
                                 <div class="row g-5 align-items-center">
                                     <div class="col-md-6">
                                         <div class="testimonial-img">
-                                            <img class="img-fluid" src="{{ asset('uploads/Testimonial/'.$item->image) }}" alt="">
+                                            <img class="img-fluid" src="{{ str_starts_with($item->image, 'http') ? $item->image : asset('uploads/Testimonial/'.$item->image) }}" alt="">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
@@ -145,7 +145,7 @@
         <div class="container p-0">
             <div class="row g-0 align-items-center">
                 <div class="col-md-5 ps-lg-0 text-start wow fadeIn" data-wow-delay="0.2s">
-                    <img class="img-fluid w-100" src="img/newsletter.jpg" alt="">
+                    <img class="img-fluid w-100" src="{{ asset('assets/img/newsletter.jpg') }}" alt="">
                 </div>
                 <div class="col-md-7 py-5 newsletter-text wow fadeIn" data-wow-delay="0.5s">
                     <div class="p-5">

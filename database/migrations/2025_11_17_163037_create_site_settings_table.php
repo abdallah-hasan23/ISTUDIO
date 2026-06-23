@@ -19,7 +19,7 @@ return new class extends Migration
                 $table->string('email');
                 $table->string('address')->nullable();
                 $table->string('facebook')->nullable();
-                $table->string('instgram')->nullable();
+                $table->string('instagram')->nullable();
                 $table->string('x')->nullable();
                 $table->string('ln')->nullable();
                 $table->timestamps();

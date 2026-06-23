@@ -16,7 +16,7 @@
 
 
         @if ($about->image)
-            <img src="{{ asset('uploads/about/' . $about->image) }}" width="200" class="mt-3">
+            <img src="{{ str_starts_with($about->image, 'http') ? $about->image : asset('uploads/about/' . $about->image) }}" width="200" class="mt-3">
         @endif
     </div>
 

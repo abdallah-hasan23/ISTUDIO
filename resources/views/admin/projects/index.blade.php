@@ -34,7 +34,7 @@
                 <td>{{ $loop->iteration }}</td>
                 <td>
                
-                    <img src="{{ asset('uploads/projects/' . ($project->images->first()?->image_path ?? 'default.jpg')) }}" 
+                    <img src="{{ str_starts_with(($project->images->first()?->image_path ?? 'default.jpg'), 'http') ? ($project->images->first()?->image_path ?? 'default.jpg') : asset('uploads/projects/' . ($project->images->first()?->image_path ?? 'default.jpg')) }}" 
                         alt="Project Image" width="100">   
                 </td>
                 <td>{{ $project->title }}</td>

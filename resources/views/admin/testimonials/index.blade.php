@@ -32,7 +32,7 @@
 
                     <td>
                         @if($item->image)
-                            <img src="{{ asset('uploads/Testimonial/'.$item->image) }}" width="60" height="60" style="object-fit: cover; border-radius: 6px;">
+                            <img src="{{ str_starts_with($item->image, 'http') ? $item->image : asset('uploads/Testimonial/'.$item->image) }}" width="60" height="60" style="object-fit: cover; border-radius: 6px;">
                         @else
                             <span class="text-muted">No Image</span>
                         @endif

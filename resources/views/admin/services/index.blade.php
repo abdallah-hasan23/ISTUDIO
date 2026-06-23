@@ -26,7 +26,7 @@
             <tr>
                 <td>
                     @if($service->icon)
-                        <img src="{{ asset('uploads/services/'.$service->icon) }}" width="80">
+                        <img src="{{ str_starts_with($service->icon, 'http') ? $service->icon : asset('uploads/services/'.$service->icon) }}" width="80">
                     @endif
                 </td>
 

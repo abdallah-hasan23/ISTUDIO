@@ -24,7 +24,7 @@
             <p><strong>ln :</strong> {{ $settings->ln }}</p>
 
             @if ($settings->logo)
-                <img src="{{ asset('uploads/settings/' . $settings->logo) }}" width="200" class="mt-3">
+                <img src="{{ str_starts_with($settings->logo, 'http') ? $settings->logo : asset('uploads/settings/' . $settings->logo) }}" width="200" class="mt-3">
             @endif
         </div>
 
@@ -59,7 +59,7 @@
             <label>Logo</label><br>
 
             @if($setting && $setting->logo)
-                <img src="{{ asset('storage/'.$setting->logo) }}" width="120" class="mb-2" style="border-radius: 6px;">
+                <img src="{{ str_starts_with($setting->logo, 'http') ? $setting->logo : asset('storage/'.$setting->logo) }}" width="120" class="mb-2" style="border-radius: 6px;">
             @endif
 
             <input type="file" name="logo" class="form-control-file mt-2">
