@@ -1,95 +1,127 @@
 @extends('admin.master')
-@section('title','Settings Page')
-@section('breadcrumb','Settings')
+@section('title', 'Site Settings')
+@section('breadcrumb', 'Settings')
+
 @section('content')
-<div class="container mt-4">
-    <h2>Site Settings</h2>
-
-    @if(session('success'))
-        <div class="alert alert-success mt-3">{{ session('success') }}</div>
-    @endif
-
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h3 class="fw-bold mb-0">General Settings</h3>
     @if ($settings)
-        <a href="{{ route('admin.settings.edit', $settings->id) }}" class="btn btn-primary mb-3">Edit</a>
-
-        <div class="card p-3">
-            <h4>{{ $settings->name }}</h4>
-
-            <p><strong>phone :</strong> {{ $settings->phone }}</p>
-            <p><strong>email :</strong> {{ $settings->email }}</p>
-            <p><strong>address :</strong> {{ $settings->address }}</p>
-            <p><strong>facebook :</strong> {{ $settings->facebook }}</p>
-            <p><strong>instgram :</strong> {{ $settings->instgram }}</p>
-            <p><strong>x :</strong> {{ $settings->x }}</p>
-            <p><strong>ln :</strong> {{ $settings->ln }}</p>
-
-            @if ($settings->logo)
-                <img src="{{ str_starts_with($settings->logo, 'http') ? $settings->logo : asset('uploads/settings/' . $settings->logo) }}" width="200" class="mt-3">
-            @endif
-        </div>
-
+        <a href="{{ route('admin.settings.edit', $settings->id) }}" class="btn btn-primary">
+            <i class="bi bi-gear-fill me-2"></i> Edit Settings
+        </a>
     @else
-        <a href="{{ route('admin.settings.create') }}" class="btn btn-success mb-3">Add Settings</a>
-        <p>No About data found.</p>
+        <a href="{{ route('admin.settings.create') }}" class="btn btn-success">
+            <i class="bi bi-plus-lg me-2"></i> Add Settings
+        </a>
     @endif
-    {{-- <form action="{{ route('admin.settings.update') }}" method="POST" enctype="multipart/form-data" class="mt-4">
-        @csrf
+</div>
 
-        <div class="form-group mt-3">
-            <label>Site Name</label>
-            <input type="text" name="site_name" class="form-control" value="{{ $setting->site_name ?? '' }}">
+@if(session('success'))
+    <div class="alert alert-success alert-dismissible fade show border-0 shadow-sm mb-4" role="alert" style="border-radius: 12px;">
+        <i class="bi bi-check-circle-fill me-2"></i>
+        {{ session('success') }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+@endif
+
+<div class="row">
+    <div class="col-lg-8">
+        <div class="card border-0 shadow-sm mb-4">
+            <div class="card-header bg-white border-bottom py-3">
+                <h5 class="fw-bold mb-0">Platform Information</h5>
+            </div>
+            <div class="card-body p-4">
+                 @if ($settings)
+                    <div class="row g-4">
+                        <div class="col-md-6">
+                            <label class="text-muted small text-uppercase">Site Name</label>
+                            <div class="fw-bold fs-5 text-dark">{{ $settings->name }}</div>
+                        </div>
+                        <div class="col-md-6 text-md-end">
+                            @if ($settings->logo)
+                                <img src="{{ str_starts_with($settings->logo, 'http') ? $settings->logo : asset('uploads/settings/' . $settings->logo) }}" 
+                                    class="img-fluid border rounded p-2 bg-light" style="max-height: 80px;">
+                            @endif
+                        </div>
+                        
+                        <div class="col-12 mt-4 border-top pt-4">
+                            <h6 class="fw-bold mb-3">Contact Details</h6>
+                            <div class="row g-3">
+                                <div class="col-md-6 d-flex align-items-center">
+                                    <div class="bg-light rounded p-2 me-3 text-primary"><i class="bi bi-telephone"></i></div>
+                                    <div>
+                                        <div class="small text-muted">Phone Number</div>
+                                        <div class="fw-medium">{{ $settings->phone }}</div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 d-flex align-items-center">
+                                    <div class="bg-light rounded p-2 me-3 text-primary"><i class="bi bi-envelope"></i></div>
+                                    <div>
+                                        <div class="small text-muted">Email Address</div>
+                                        <div class="fw-medium">{{ $settings->email }}</div>
+                                    </div>
+                                </div>
+                                <div class="col-12 d-flex align-items-center">
+                                    <div class="bg-light rounded p-2 me-3 text-primary"><i class="bi bi-geo-alt"></i></div>
+                                    <div>
+                                        <div class="small text-muted">Office Address</div>
+                                        <div class="fw-medium">{{ $settings->address }}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                @else
+                    <div class="text-center py-5">
+                         <i class="bi bi-gear-wide-connected fs-1 text-muted opacity-50 mb-3 d-block"></i>
+                         <p>No configuration found. Please initialize settings.</p>
+                         <a href="{{ route('admin.settings.create') }}" class="btn btn-primary px-4">Setup Settings</a>
+                    </div>
+                @endif
+            </div>
         </div>
+    </div>
 
-        <div class="form-group mt-3">
-            <label>Phone</label>
-            <input type="text" name="phone" class="form-control" value="{{ $setting->phone ?? '' }}">
+    <div class="col-lg-4">
+        <div class="card border-0 shadow-sm">
+            <div class="card-header bg-white border-bottom py-3">
+                <h5 class="fw-bold mb-0">Social Networks</h5>
+            </div>
+            <div class="card-body p-4">
+                @if($settings)
+                    <div class="list-group list-group-flush">
+                        <div class="list-group-item border-0 px-0 py-3 d-flex align-items-center">
+                            <div class="bg-primary text-white rounded p-2 me-3" style="width: 32px; height: 32px; display: flex; align-items: center; justify-content: center;">
+                                <i class="bi bi-facebook"></i>
+                            </div>
+                            <div class="flex-grow-1 text-truncate small text-muted">{{ $settings->facebook ?: 'Not Linked' }}</div>
+                        </div>
+                        <div class="list-group-item border-0 px-0 py-3 d-flex align-items-center">
+                            <div class="bg-danger text-white rounded p-2 me-3" style="width: 32px; height: 32px; display: flex; align-items: center; justify-content: center;">
+                                <i class="bi bi-instagram"></i>
+                            </div>
+                            <div class="flex-grow-1 text-truncate small text-muted">{{ $settings->instgram ?: 'Not Linked' }}</div>
+                        </div>
+                        <div class="list-group-item border-0 px-0 py-3 d-flex align-items-center">
+                            <div class="bg-dark text-white rounded p-2 me-3" style="width: 32px; height: 32px; display: flex; align-items: center; justify-content: center;">
+                                <i class="bi bi-twitter-x"></i>
+                            </div>
+                            <div class="flex-grow-1 text-truncate small text-muted">{{ $settings->x ?: 'Not Linked' }}</div>
+                        </div>
+                        <div class="list-group-item border-0 px-0 py-3 d-flex align-items-center">
+                            <div class="bg-info text-white rounded p-2 me-3" style="width: 32px; height: 32px; display: flex; align-items: center; justify-content: center;">
+                                <i class="bi bi-linkedin"></i>
+                            </div>
+                            <div class="flex-grow-1 text-truncate small text-muted">{{ $settings->ln ?: 'Not Linked' }}</div>
+                        </div>
+                    </div>
+                @else
+                    <div class="text-center py-4">
+                        <p class="text-muted small mb-0">Complete setup to see social links.</p>
+                    </div>
+                @endif
+            </div>
         </div>
-
-        <div class="form-group mt-3">
-            <label>Email</label>
-            <input type="email" name="email" class="form-control" value="{{ $setting->email ?? '' }}">
-        </div>
-
-        <div class="form-group mt-3">
-            <label>Address</label>
-            <input type="text" name="address" class="form-control" value="{{ $setting->address ?? '' }}">
-        </div>
-
-        <div class="form-group mt-3">
-            <label>Logo</label><br>
-
-            @if($setting && $setting->logo)
-                <img src="{{ str_starts_with($setting->logo, 'http') ? $setting->logo : asset('storage/'.$setting->logo) }}" width="120" class="mb-2" style="border-radius: 6px;">
-            @endif
-
-            <input type="file" name="logo" class="form-control-file mt-2">
-        </div>
-
-        <hr>
-
-        <h4>Social Links</h4>
-
-        <div class="form-group mt-3">
-            <label>Facebook</label>
-            <input type="text" name="facebook" class="form-control" value="{{ $setting->facebook ?? '' }}">
-        </div>
-
-        <div class="form-group mt-3">
-            <label>Instagram</label>
-            <input type="text" name="instagram" class="form-control" value="{{ $setting->instagram ?? '' }}">
-        </div>
-
-        <div class="form-group mt-3">
-            <label>X</label>
-            <input type="text" name="x" class="form-control" value="{{ $setting->twitter ?? '' }}">
-        </div>
-
-        <div class="form-group mt-3">
-            <label>LinkedIn</label>
-            <input type="text" name="ln" class="form-control" value="{{ $setting->linkedin ?? '' }}">
-        </div>
-
-        <button class="btn btn-success mt-3">Save</button>
-    </form> --}}
+    </div>
 </div>
 @endsection

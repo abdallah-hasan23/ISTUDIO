@@ -18,7 +18,7 @@ Route::post('/contact', [SiteController::class, 'store'])->name('site.contact.st
 
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    return redirect()->route('admin.index');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {

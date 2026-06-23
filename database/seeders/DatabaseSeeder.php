@@ -23,7 +23,7 @@ class DatabaseSeeder extends Seeder
         // Creating Super Admin User
         User::create([
             'name' => 'Super Admin',
-            'email' => 'admin@admin.ps',
+            'email' => 'admin@istudio.com',
             'password' => bcrypt('admin'),
             'type' => 'admin',
         ]);
@@ -32,9 +32,9 @@ class DatabaseSeeder extends Seeder
         SiteSetting::create([
             'name' => 'My Company',
             'logo' => 'https://picsum.photos/200/200?random=1',
-            'phone' => '+970123456789',
+            'phone' => '+966123456789',
             'email' => 'info@mycompany.com',
-            'address' => 'Ramallah, Palestine',
+            'address' => 'Riyad, Saudi Arabia',
             'facebook' => 'https://facebook.com/mycompany',
             'instagram' => 'https://instagram.com/mycompany',
             'x' => 'https://twitter.com/mycompany',

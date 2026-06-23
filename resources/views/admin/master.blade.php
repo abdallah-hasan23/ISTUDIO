@@ -28,14 +28,198 @@
     <link rel="preload" href="{{ asset('back-end/./css/adminlte.css') }}" as="style" />
     <!--end::Accessibility Features-->
     <!--begin::Fonts-->
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/@fontsource/source-sans-3@5.0.12/index.css"
-      integrity="sha256-tXJfXfp6Ewt1ilPzLDtQnJV4hclT9XuaZUKyUvmyr+Q="
-      crossorigin="anonymous"
-      media="print"
-      onload="this.media='all'"
-    />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+      :root {
+        --primary-color: #0d6b68;
+        --primary-hover: #0a5653;
+        --bg-light: #e6f0ef;
+        --secondary-bg: #dde9e9;
+        --dark-color: #03201f;
+        --text-muted: #5c7271;
+        --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        --btn-radius: 10px;
+        --card-radius: 16px;
+      }
+
+      body {
+        font-family: 'Outfit', sans-serif !important;
+        background-color: var(--bg-light) !important;
+        color: var(--dark-color);
+      }
+
+      /* Navbar Enhancements */
+      .app-header {
+        background: rgba(255, 255, 255, 0.8) !important;
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid var(--secondary-bg) !important;
+        padding: 0.5rem 1rem;
+      }
+
+      .nav-link {
+        color: var(--dark-color) !important;
+        font-weight: 500;
+        transition: all 0.3s ease;
+      }
+
+      .nav-link:hover {
+        color: var(--primary-color) !important;
+      }
+
+      /* Sidebar Enhancements */
+      .app-sidebar {
+        background-color: var(--dark-color) !important;
+        border-right: none !important;
+        box-shadow: 10px 0 30px rgba(0, 0, 0, 0.1) !important;
+      }
+
+      .sidebar-brand {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
+        padding: 1.5rem !important;
+      }
+
+      .brand-text {
+        font-weight: 700 !important;
+        letter-spacing: 1px;
+        color: #fff !important;
+      }
+
+      .sidebar-menu .nav-link {
+        color: rgba(255, 255, 255, 0.7) !important;
+        padding: 0.8rem 1.5rem !important;
+        margin: 0.2rem 0.8rem !important;
+        border-radius: 10px !important;
+        font-size: 0.95rem;
+      }
+
+      .sidebar-menu .nav-link:hover, .sidebar-menu .nav-link.active {
+        background-color: var(--primary-color) !important;
+        color: #fff !important;
+      }
+
+      .sidebar-menu .nav-link i {
+        margin-right: 10px;
+        font-size: 1.1rem;
+      }
+
+      /* Card & Content Redesign */
+      .app-main {
+        padding: 1.5rem;
+      }
+
+      .card {
+        border: none !important;
+        border-radius: var(--card-radius) !important;
+        box-shadow: var(--card-shadow) !important;
+        margin-bottom: 1.5rem;
+        overflow: hidden;
+      }
+
+      .card-header {
+        background: #fff !important;
+        border-bottom: 1px solid var(--secondary-bg) !important;
+        padding: 1.25rem !important;
+      }
+
+      .card-title {
+        font-weight: 600 !important;
+        color: var(--dark-color);
+      }
+
+      /* Button Enhancements */
+      .btn-primary {
+        background-color: var(--primary-color) !important;
+        border-color: var(--primary-color) !important;
+        border-radius: var(--btn-radius) !important;
+        padding: 0.6rem 1.5rem;
+        font-weight: 500;
+        transition: all 0.3s ease;
+      }
+
+      .btn-primary:hover {
+        background-color: var(--primary-hover) !important;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(13, 107, 104, 0.3);
+      }
+
+      /* Table Enhancements */
+      .table {
+        border-collapse: separate;
+        border-spacing: 0 8px;
+        background-color: transparent !important;
+      }
+
+      .table thead th {
+        background-color: transparent !important;
+        border: none !important;
+        color: var(--text-muted);
+        font-weight: 600;
+        text-transform: uppercase;
+        font-size: 0.8rem;
+        letter-spacing: 0.5px;
+      }
+
+      .table tbody tr {
+        background-color: #fff !important;
+        transition: all 0.2s ease;
+      }
+
+      .table tbody tr:hover {
+        transform: scale(1.01);
+        box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+      }
+
+      .table td {
+        border: none !important;
+        padding: 1.2rem 1rem !important;
+        vertical-align: middle;
+      }
+
+      .table td:first-child { border-radius: 12px 0 0 12px; }
+      .table td:last-child { border-radius: 0 12px 12px 0; }
+
+      /* Badge Enhancements */
+      .badge {
+        padding: 0.5em 1em !important;
+        border-radius: 6px !important;
+        font-weight: 500 !important;
+      }
+
+      /* Breadcrumb */
+      .breadcrumb-item a {
+        color: var(--primary-color) !important;
+        text-decoration: none;
+      }
+
+      /* Form Enhancements */
+      .form-control, .form-select {
+        border-radius: 10px !important;
+        border: 1px solid var(--secondary-bg) !important;
+        padding: 0.75rem 1rem !important;
+        transition: all 0.3s ease !important;
+        background-color: #fcfdfd !important;
+      }
+
+      .form-control:focus, .form-select:focus {
+        border-color: var(--primary-color) !important;
+        box-shadow: 0 0 0 4px rgba(13, 107, 104, 0.1) !important;
+        background-color: #fff !important;
+      }
+
+      label {
+        font-weight: 500 !important;
+        margin-bottom: 0.5rem !important;
+        color: var(--dark-color) !important;
+      }
+
+      /* Custom Scrollbar */
+      ::-webkit-scrollbar { width: 6px; }
+      ::-webkit-scrollbar-track { background: var(--bg-light); }
+      ::-webkit-scrollbar-thumb { background: var(--secondary-bg); border-radius: 10px; }
+      ::-webkit-scrollbar-thumb:hover { background: var(--primary-color); }
+    </style>
     <!--end::Fonts-->
     <!--begin::Third Party Plugin(OverlayScrollbars)-->
     <link
@@ -104,44 +288,45 @@
 
             <!--begin::User Menu Dropdown-->
             <li class="nav-item dropdown user-menu">
-              <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+              <a href="#" class="nav-link dropdown-toggle d-flex align-items-center" data-bs-toggle="dropdown">
                 <img
-                  src="https://ui-avatars.com/api/?name={{ implode('', array_map(function($part) { return substr($part, 0, 1); }, explode(' ', auth()->user()->name))) }}&size=160&background=007bff&color=fff"
-                  class="user-image rounded-circle shadow"
+                  src="https://ui-avatars.com/api/?name={{ implode('', array_map(function($part) { return substr($part, 0, 1); }, explode(' ', auth()->user()->name))) }}&size=160&background=0d6b68&color=fff"
+                  class="user-image rounded-circle border"
                   alt="User Image"
+                  style="width: 35px; height: 35px;"
                 />
-                <span class="d-none d-md-inline">{{ auth()->user()->name }}</span>
+                <span class="d-none d-md-inline ms-2">{{ auth()->user()->name }}</span>
               </a>
-              <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-end">
+              <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-end shadow border-0" style="border-radius: 12px; overflow: hidden;">
                 <!--begin::User Image-->
-                <li class="user-header text-bg-primary">
+                <li class="user-header" style="background-color: var(--primary-color); color: white;">
                   <img
-                  src="https://ui-avatars.com/api/?name={{ implode('', array_map(function($part) { return substr($part, 0, 1); }, explode(' ', auth()->user()->name))) }}&size=160&background=007bff&color=fff"
-                  class="user-image rounded-circle shadow"
+                  src="https://ui-avatars.com/api/?name={{ implode('', array_map(function($part) { return substr($part, 0, 1); }, explode(' ', auth()->user()->name))) }}&size=160&background=fff&color=0d6b68"
+                  class="user-image rounded-circle shadow-sm mb-2"
                   alt="User Image"
                 />
                   <p>
-                    {{ auth()->user()->name  }} - {{ auth()->user()->type }}
-                    <small>Member since {{ auth()->user()->created_at->format('M , Y') }}</small>
+                    {{ auth()->user()->name  }}
+                    <small class="d-block opacity-75">{{ auth()->user()->type }}</small>
+                    <small>Member since {{ auth()->user()->created_at->format('M, Y') }}</small>
                   </p>
                 </li>
                 <!--end::User Image-->
                 <!--begin::Menu Body-->
-                <li class="user-body">
-                  <div class="row">
-                    <div class="col-12">
-                      <a href="{{ route('admin.profile') }}" class="btn btn-default btn-flat w-100 mb-2">Profile</a>
-                    </div>
-                    <div class="col-12">
+                <li class="user-body p-3">
+                  <div class="d-grid gap-2">
+                      <a href="{{ route('admin.profile') }}" class="btn btn-light border w-100">
+                        <i class="bi bi-person me-2"></i> Profile
+                      </a>
                       <form method="POST" action="{{ route('logout') }}">
                         @csrf
-                        <button type="submit" class="btn btn-default btn-flat w-100">Sign out</button>
+                        <button type="submit" class="btn btn-outline-danger w-100">
+                          <i class="bi bi-box-arrow-right me-2"></i> Sign out
+                        </button>
                       </form>
-                    </div>
                   </div>
                 </li>
                 <!--end::Menu Body-->
-
               </ul>
             </li>
             <!--end::User Menu Dropdown-->
@@ -156,16 +341,9 @@
         <!--begin::Sidebar Brand-->
         <div class="sidebar-brand">
           <!--begin::Brand Link-->
-          <a href="{{ url('/') }}" class="brand-link">
-            <!--begin::Brand Image-->
-            <img
-              src="{{ asset('back-end/./assets/img/AdminLTELogo.png') }}"
-              alt="AdminLTE Logo"
-              class="brand-image opacity-75 shadow"
-            />
-            <!--end::Brand Image-->
+          <a href="{{ url('/') }}" class="brand-link text-decoration-none">
             <!--begin::Brand Text-->
-            <span class="brand-text fw-light">ISTUDIO</span>
+            <span class="brand-text fs-4 uppercase">ISTUDIO</span>
             <!--end::Brand Text-->
           </a>
           <!--end::Brand Link-->
